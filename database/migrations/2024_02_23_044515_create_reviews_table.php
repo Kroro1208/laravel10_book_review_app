@@ -16,6 +16,8 @@ return new class extends Migration
             $table->text('review');
             $table->unsignedInteger('rating'); // 正の整数およびゼロのみを格納できる数値型
             $table->timestamps();
+            // 外部キー制約をbook tableに設定してカスケードで本のidを消したらレビューも消えるように設定
+            $table->foreignId('book_id')->constrained()->cascadeOnDelete();
         });
     }
 
