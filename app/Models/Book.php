@@ -30,7 +30,7 @@ class Book extends Model
 
     // 評価が高い順にソートする
     // 'reviews_avg_rating'はwithAvg()により自動で作成される
-    public function scopeHighestRated(Builder $query): BUilder
+    public function scopeHighestRated(Builder $query): Builder
     {
         return $query->withAvg('reviews', 'rating')->orderBy('reviews_avg_rating', 'desc');
     }
