@@ -52,11 +52,18 @@ class BookController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * 詳細ページは最新順に取得して表示させた
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return view(
+            'books.show',
+            [
+                'book' => $book->load([
+                    'reviews' => fn ($query) => $query->latest()
+                ])
+            ]
+        );
     }
 
     /**
