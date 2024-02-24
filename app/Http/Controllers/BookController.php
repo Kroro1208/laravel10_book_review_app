@@ -21,7 +21,7 @@ class BookController extends Controller
             fn ($query, $title) => $query->title($title) // title()はBookモデルで実装したscopeTitle()のこと
         )->get();
 
-        return view('books.index', [compact('books')]); // ['books'=>[]]
+        return view('books.index', compact('books')); // ['books'=>[]]
     }
 
     /**
