@@ -2,22 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Book Reviews</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <meta charset="UTF-8">
+  <title>Book Reviews</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 
-    {{-- blade-formatter-disable --}}
-    <style type="text/tailwindcss">
-        .btn {
+  {{-- blade-formatter-disable --}}
+  <style type="text/tailwindcss">
+    .btn {
       @apply bg-white rounded-md px-4 py-2 text-center font-medium text-slate-500 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50 h-10;
     }
 
     .input {
-      @apply shadow-sm appearance-none border w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none rounded-md border-slate-300;
+      @apply shadow-sm appearance-none border-4 border-indigo-500/75 w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none rounded-xl border-slate-500;
     }
 
     .filter-container {
-      @apply mb-4 flex space-x-2 rounded-md bg-slate-100 p-2;
+      @apply mb-4 flex space-x-2 rounded-xl bg-slate-300 p-2 ;
     }
 
     .filter-item {
@@ -25,7 +25,7 @@
     }
 
     .filter-item-active {
-      @apply bg-white shadow-sm text-slate-800 flex w-full items-center justify-center rounded-md px-4 py-2 text-center text-sm font-medium;
+      @apply bg-white shadow-sm text-pink-500 flex w-full items-center justify-center rounded-xl px-4 py-2 text-center text-sm font-medium;
     }
 
     .book-item {
@@ -60,11 +60,11 @@
       @apply text-slate-500 underline;
     }
   </style>
-    {{-- blade-formatter-enable --}}
+  {{-- blade-formatter-enable --}}
 </head>
 
 <body class="container mx-auto mt-10 mb-10 max-w-3xl">
-    @yield('content')
+  @yield('content')
 </body>
 
 </html>
