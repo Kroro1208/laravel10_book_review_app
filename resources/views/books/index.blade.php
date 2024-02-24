@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="mb-10 text-2xl">Books</h1>
+<h1 class="mb-10 text-2xl">極 Books Review App</h1>
 <form class="mb-4 flex items-center gap-3 max-w-4xl" method="GET" action="{{route('books.index')}}">
     <input class="input h-10" type="text" name="title" placeholder="検索したい本のキーワードを入力" value="{{request('title')}}" />
     <input type="hidden" name="filter" value="{{request('filter')}}" />

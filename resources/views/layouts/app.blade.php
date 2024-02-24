@@ -25,7 +25,7 @@
     }
 
     .filter-item-active {
-      @apply bg-white shadow-sm text-pink-500 flex w-full items-center justify-center rounded-xl px-4 py-2 text-center text-sm font-medium;
+      @apply bg-green-500 shadow-sm text-white flex w-full items-center justify-center rounded-xl px-4 py-2 text-center text-sm font-medium;
     }
 
     .book-item {
