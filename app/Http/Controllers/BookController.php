@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
-
 class BookController extends Controller
 {
     /**titleスコープを利用して、inputで入力された値が含まれる本を表示するメソッドを実装
@@ -30,7 +29,9 @@ class BookController extends Controller
             default => $books->latest()
         };
 
-        $books = $books->get(); // クエリを実行して結果を取得
+        // $books = $books->get(); // クエリを実行して結果を取得
+        $cacheKey = 'books:' . $filter . ':' . $title;
+        $books =  cache()->remember($cacheKey, 3600, fn () => $books->get());
 
         return view('books.index', compact('books')); // ['books'=>[]]
     }
@@ -56,14 +57,11 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return view(
-            'books.show',
-            [
-                'book' => $book->load([
-                    'reviews' => fn ($query) => $query->latest()
-                ])
-            ]
-        );
+        $cacheKey = 'books:' . $book->id;
+        $book =  cache()->remember($cacheKey, 3600, fn () => $book->load([
+            'reviews' => fn ($query) => $query->latest()
+        ]));
+        return view('books.show', ['book' => $book]);
     }
 
     /**
