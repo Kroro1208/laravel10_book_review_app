@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
+
 class BookController extends Controller
 {
     /**titleスコープを利用して、inputで入力された値が含まれる本を表示するメソッドを実装
@@ -15,11 +16,21 @@ class BookController extends Controller
     public function index(Request $request)
     {
         $title = $request->input('title');
-
+        $filter = $request->input('filter', '');
         $books = Book::when(
             $title,
             fn ($query, $title) => $query->title($title) // title()はBookモデルで実装したscopeTitle()のこと
-        )->get();
+        );
+
+        $books = match ($filter) {
+            'popular_last_month' => $books->popularLastMonth(),
+            'popular_last_6months' => $books->popularLast6Months(),
+            'highest_rated_last_month' => $books->highestRatedLastMonth(),
+            'highest_rated_last_6months' => $books->highestRatedLast6Months(),
+            default => $books->latest()
+        };
+
+        $books = $books->get(); // クエリを実行して結果を取得
 
         return view('books.index', compact('books')); // ['books'=>[]]
     }

@@ -13,16 +13,15 @@
     @php
     $filters = [
     'latest' => '最新',
+    'popular_last_month' => '先月の人気',
     'popular_last_6months' => '過去6ヶ月で人気',
-    'popular_last_months' => '先月の人気',
-    'highest_rated_last_months' => '先月の最高評価',
+    'highest_rated_last_month' => '先月の最高評価',
     'highest_rated_last_6months' => '過去6ヶ月の最高評価',
     ];
     @endphp
 
     @foreach($filters as $key => $label)
-    <a href="{{route('books.index', [...request()->query(), 'filter'=> $key])}}" 
-    class="{{request('filter')===$key || (request('filter')===null && $key === '') ? 'filter-item-active' : 'filter-item'}}">
+    <a href="{{route('books.index', [...request()->query(), 'filter'=> $key])}}" class="{{request('filter')===$key || (request('filter')===null && $key === '') ? 'filter-item-active' : 'filter-item'}}">
         {{$label}}
     </a>
     @endforeach
