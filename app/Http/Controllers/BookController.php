@@ -31,12 +31,13 @@ class BookController extends Controller
 
         // クエリを実行して結果を取得
         $cacheKey = 'books:' . $filter . ':' . $title;
-        $books = $books->get();
-        // $books =  cache()->remember(
-        //     $cacheKey,
-        //     3600,
-        //     fn () => $books->get()
-        // );
+        $books =
+            cache()->remember(
+                $cacheKey,
+                3600,
+                fn () =>
+                $books->get()
+            );
 
         return view('books.index', compact('books')); // ['books'=>[]]
     }
@@ -62,7 +63,7 @@ class BookController extends Controller
      */
     public function show(int $id)
     {
-        $cacheKey = 'books:' . $id;
+        $cacheKey = 'book:' . $id;
         $book =  cache()->remember(
             $cacheKey,
             3600,

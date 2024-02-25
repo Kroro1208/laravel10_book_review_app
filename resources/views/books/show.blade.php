@@ -19,9 +19,13 @@
 </div>
 
 
-
-<div class="mb-4">
-    <a href="{{route('books.reviews.create', $book)}}" class="reset-link">レビューを作成する</a>
+<div class="flex gap-5">
+    <div class="mb-4">
+        <a href="{{route('books.reviews.create', $book)}}" class="reset-link">レビューを作成する</a>
+    </div>
+    <div class="mb-4">
+        <a href="{{route('books.index', $book)}}" class="reset-link">一覧ページに戻る</a>
+    </div>
 </div>
 
 
