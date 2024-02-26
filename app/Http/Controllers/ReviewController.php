@@ -31,6 +31,8 @@ class ReviewController extends Controller
         $data = $request->validate([
             'review' => 'required|min:10',
             'rating' => 'required|min:1|max:5|integer',
+        ], [
+            'review.min' => 'レビューは10文字以上で入力してください。',
         ]);
 
         $book->reviews()->create($data);
