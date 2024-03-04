@@ -9,7 +9,7 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['review', 'rating']; // マスアサインメント。複数の属性を一度に代入可能
+    protected $fillable = ['review', 'rating'];
 
 
     public function book()
