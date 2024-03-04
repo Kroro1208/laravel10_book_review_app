@@ -76,6 +76,7 @@ class Book extends Model
     //     }
     // }
 
+    // Carbonライブラリを使用して過去6ヶ月間（now()->subMonths(6)からnow()までの期間）に限定したデータのフィルタリングでソート
     public function scopePopularLastMonth(Builder $query): Builder | QueryBuilder // popularLatestMonth()
     {
         return $query->popular(now()->subMonth(), now())
