@@ -27,6 +27,11 @@ class ReviewFactory extends Factory
         ];
     }
 
+    /**
+     * $this->state()はLaravelのファクトリクラス内で使用され、モデルインスタンスに対して特定の状態を定義する
+     * モデルの属性を変更するクロージャ（無名関数）を引数として受け取ることがポイント
+     */
+
     public function good()
     {
         return $this->state(function (array $attributes) {
@@ -40,23 +45,16 @@ class ReviewFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'rating' => fake()->numberBetween(2, 5)
+                'rating' => fake()->numberBetween(3, 5)
             ];
         });
     }
 
-    /**
-     * $this->state()はLaravelのファクトリクラス内で使用され、モデルインスタンスに対して特定の状態を定義する
-     * モデルの属性を変更するクロージャ（無名関数）を引数として受け取ることがポイント
-     *
-     *
-     */
-    //
     public function bad()
     {
         return $this->state(function (array $attributes) {
             return [
-                'rating' => fake()->numberBetween(1, 3)
+                'rating' => fake()->numberBetween(1, 2)
             ];
         });
     }

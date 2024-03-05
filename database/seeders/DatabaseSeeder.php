@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
 
             Review::factory()->count($numReviews)
                 ->average()
-                ->for($book) // for()は親モデルインスタンスに子モデルインスタンスを関連付ける
+                ->for($book)
                 ->create();
         });
 
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
 
             Review::factory()->count($numReviews)
                 ->bad()
-                ->for($book) // for()は親モデルインスタンスに子モデルインスタンスを関連付ける
+                ->for($book)
                 ->create();
         });
     }
